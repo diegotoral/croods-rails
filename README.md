@@ -14,8 +14,6 @@ To add a `Project` resource to your app, start by generating a migration:
 ```rails g migration CreateProjects```
 
 ``` ruby
-# It's crucial to write really solid migrations
-# croods will use your database schema to build your resources.
 class CreateProjects < ActiveRecord::Migration[5.2]
   def change
     create_table :projects do |t|
@@ -25,8 +23,10 @@ class CreateProjects < ActiveRecord::Migration[5.2]
   end
 end
 ```
+> Protip: Check [schema_associations](https://github.com/SchemaPlus/schema_associations) to learn how to write solid migrations that really describe your model
+
 Then create the module and the main file `app/resources/projects/resource.rb`:
-```ruby 
+```ruby
 module Projects
   class Resource < ApplicationResource
   end
@@ -69,7 +69,7 @@ module Projects
 end
 ```
 
-Protip: you can create a Model module and `extend_model { include Projects::Model }`.
+> Protip: you can create a Model module and `extend_model { include Projects::Model }`.
 ```ruby
 module Projects
   module Model

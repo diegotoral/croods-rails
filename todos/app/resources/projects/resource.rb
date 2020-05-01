@@ -6,5 +6,7 @@ module Projects
       authorize model
       render json: collection.where(highlighted: true)
     end
+
+    extend_model { include Projects::Model }
   end
 end
